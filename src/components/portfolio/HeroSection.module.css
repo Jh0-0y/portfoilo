@@ -1,0 +1,386 @@
+/* Hero 섹션 전체 */
+.heroSection {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  overflow: hidden;
+  background-color: var(--color-bg-primary);
+}
+
+/* 배경 효과들 */
+.bgGradient {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 20% 20%, var(--color-primary-500) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, var(--color-primary-600) 0%, transparent 50%);
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--color-border-light) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border-light) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.3;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+}
+
+.bgGlow {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--color-primary-500) 0%, transparent 70%);
+  opacity: 0.1;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* 맥 윈도우 */
+.macWindow {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1000px;
+  background-color: var(--color-bg-secondary);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 
+    0 0 0 1px var(--color-border-light),
+    0 25px 50px -12px rgba(0, 0, 0, 0.4),
+    0 0 100px -20px var(--color-primary-500);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+/* 타이틀바 */
+.titlebar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  background-color: var(--color-bg-tertiary);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+/* 신호등 버튼 */
+.trafficLights {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.trafficLight {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.trafficLight:hover {
+  transform: scale(1.2);
+}
+
+.trafficLight.red {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff5f57 100%);
+  box-shadow: 0 0 8px rgba(255, 95, 87, 0.5);
+}
+
+.trafficLight.yellow {
+  background: linear-gradient(135deg, #ffd93d 0%, #ffbd2e 100%);
+  box-shadow: 0 0 8px rgba(255, 189, 46, 0.5);
+}
+
+.trafficLight.green {
+  background: linear-gradient(135deg, #6bcb77 0%, #28c940 100%);
+  box-shadow: 0 0 8px rgba(40, 201, 64, 0.5);
+}
+
+/* 탭 네비게이션 */
+.tabNav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  gap: 4px;
+}
+
+.tab {
+  padding: 8px 18px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-tertiary);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-base);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab:hover {
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
+}
+
+/* 액션 버튼들 */
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  color: var(--color-text-tertiary);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-base);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actionButton:hover {
+  color: var(--color-primary-500);
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-light);
+}
+
+/* 윈도우 콘텐츠 */
+.windowContent {
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px 80px;
+}
+
+/* Hero 콘텐츠 */
+.heroContent {
+  text-align: center;
+  max-width: 700px;
+}
+
+/* 인사말 */
+.greeting {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary-500);
+  margin-bottom: var(--spacing-4);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.2s;
+}
+
+/* 이름 */
+.name {
+  font-size: clamp(48px, 10vw, 80px);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+  margin-bottom: var(--spacing-6);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.4s;
+}
+
+.nameText {
+  background: linear-gradient(135deg, var(--color-primary-400) 0%, var(--color-primary-600) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nameSuffix {
+  color: var(--color-text-primary);
+  font-size: 0.5em;
+  font-weight: var(--font-weight-medium);
+  margin-left: 8px;
+}
+
+/* 역할 타이핑 */
+.roleWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: var(--spacing-6);
+  font-size: var(--font-size-xl);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.6s;
+}
+
+.roleLabel {
+  color: var(--color-text-tertiary);
+  font-weight: var(--font-weight-normal);
+}
+
+.role {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-code);
+}
+
+.cursor {
+  color: var(--color-primary-500);
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* 설명 */
+.description {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-10);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.8s;
+}
+
+/* 스크롤 유도 버튼 */
+.scrollDown {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-tertiary);
+  background: transparent;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 1s;
+}
+
+.scrollDown:hover {
+  color: var(--color-primary-500);
+  border-color: var(--color-primary-500);
+  transform: translateY(4px);
+}
+
+.scrollIcon {
+  font-size: 20px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(5px);
+  }
+  60% {
+    transform: translateY(2px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 20px;
+  }
+
+  .titlebar {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .trafficLights {
+    gap: 6px;
+  }
+
+  .trafficLight {
+    width: 10px;
+    height: 10px;
+  }
+
+  .tabNav {
+    gap: 2px;
+  }
+
+  .tab {
+    padding: 6px 10px;
+    font-size: var(--font-size-xs);
+  }
+
+  .windowContent {
+    padding: 40px 24px 60px;
+    min-height: 400px;
+  }
+
+  .name {
+    font-size: clamp(36px, 12vw, 56px);
+  }
+
+  .nameSuffix {
+    display: block;
+    margin-left: 0;
+    margin-top: 8px;
+  }
+
+  .roleWrapper {
+    flex-direction: column;
+    gap: 4px;
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .tabNav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .tabNav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    white-space: nowrap;
+  }
+
+  .actions {
+    gap: 4px;
+  }
+
+  .actionButton {
+    width: 30px;
+    height: 30px;
+  }
+}
