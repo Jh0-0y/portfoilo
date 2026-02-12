@@ -1,15 +1,13 @@
-// src/routes/AppRouter.tsx
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import PublicRoutes from './PublicRouter'
-import AdminRoutes from './AdminRouter'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ResumeLayout } from '@/layout/ResumeLayout'
+import {ResumePage} from '@/pages/ResumePage';
 
-export default function AppRouter() {
-  return (
-    <BrowserRouter>
+export const AppRouter = () => (
+  <BrowserRouter basename="/">
       <Routes>
-        <Route path="/*" element={<PublicRoutes />} />
-        <Route path="/admin/*" element={<AdminRoutes />} />
+        <Route element={<ResumeLayout />}>
+            <Route path="/" element={<ResumePage />} />
+        </Route>
       </Routes>
-    </BrowserRouter>
-  )
-}
+  </BrowserRouter>
+);
